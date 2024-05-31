@@ -6,7 +6,7 @@ export interface Iproduct {
     description: string;
     categoryName: string;
     brandName: string;
-    imgUrl: string;
+    imageUrl: string;
     active: boolean;
     unitsInStock: number;
     dateCreated: Date;

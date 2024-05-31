@@ -2,19 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Iproduct } from '../shared/model/products';
 import { ShopService } from './shop.service';
-import { CommonModule } from '@angular/common'; // Import CommonModule for common Angular directives
-import { HttpClient } from '@angular/common/http'; // Import HttpClient
+import { CommonModule } from '@angular/common'; 
+import { HttpClient } from '@angular/common/http';
+import { ProductItemComponent } from './product-item/product-item.component';
 
 @Component({
   selector: 'app-shop',
   standalone: true,
   imports: [
     CommonModule,
-    HttpClientModule // Ensure HttpClientModule is imported here
+    HttpClientModule ,
+    ProductItemComponent
   ],
   providers: [
-    ShopService, // Provide ShopService here
-    HttpClient // Provide HttpClient here
+    ShopService, 
+    HttpClient 
   ],
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss']
