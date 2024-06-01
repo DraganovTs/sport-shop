@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { Iproduct } from '../shared/model/products';
+import { Iproduct, iCategory , iBrand } from '../shared/model/products';
 import { ShopService } from './shop.service';
 import { CommonModule } from '@angular/common'; 
 import { HttpClient } from '@angular/common/http';
@@ -23,6 +23,8 @@ import { ProductItemComponent } from './product-item/product-item.component';
 })
 export class ShopComponent implements OnInit {
   products: Iproduct[] = [];
+  categories: iCategory[] = [];
+  brands: iBrand[] = [];
 
   constructor(private shopService: ShopService) {}
 
