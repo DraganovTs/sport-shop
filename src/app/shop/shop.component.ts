@@ -5,9 +5,10 @@ import { ShopService } from './shop.service';
 import { CommonModule } from '@angular/common'; 
 import { HttpClient } from '@angular/common/http';
 import { ProductItemComponent } from './product-item/product-item.component';
-import { response } from 'express';
+import e, { response } from 'express';
 import { error } from 'console';
 import { ShopParams } from '../shared/model/shopparams';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 @Component({
   selector: 'app-shop',
@@ -15,7 +16,8 @@ import { ShopParams } from '../shared/model/shopparams';
   imports: [
     CommonModule,
     HttpClientModule ,
-    ProductItemComponent
+    ProductItemComponent,
+    PaginationModule
   ],
   providers: [
     ShopService, 
@@ -29,6 +31,12 @@ export class ShopComponent implements OnInit {
   categories: iCategory[] = [];
   brands: iBrand[] = [];
   shopParams: ShopParams;
+  totalCount=0;
+  sortOptions = [
+    {name: 'Alphabetical',value: 'title'},
+    {name: 'Price: Low to high',value: 'priceAsc'},
+    {name: 'Price: High to low', value: 'priceDesc'}
+  ]
 
   constructor(private shopService: ShopService) {
     this.shopParams = this.shopService.getShopParams();
@@ -52,7 +60,13 @@ getCategories(){
 
 getProducts(){
   this.shopService.getProducts().subscribe({
-    next: response => this.products = response.productList,
+    next: response => {
+      if(response != null)
+      this.products = response.productList
+      this.shopParams.pageIndex = response.pageIndex;
+      this.shopParams.pageSize = response.pageSize;
+      this.totalCount = response.totalCount;
+    },
     error: error => console.log(error)
   });
 }
@@ -82,4 +96,21 @@ onCategorySelected(categoryId: number){
   this.getProducts();
 }
 
+onSortSelected(event: any){
+  const params = this.shopService.getShopParams();
+  params.sort = event.target.value;
+  this.shopService.setShopParams(params);
+  this.shopParams = params;
+  this.getProducts();
+}
+
+onPageChanged(event: any){
+  const params = this.shopService.getShopParams();
+  if(params.pageIndex !== event.page){
+    params.pageIndex = event.page;
+    this.shopService.setShopParams(params);
+    this.shopParams = params;
+    this.getProducts();
+  }
+}
 }

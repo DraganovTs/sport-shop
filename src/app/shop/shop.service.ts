@@ -20,10 +20,15 @@ export class ShopService {
   getProducts() : Observable<Pagination<Iproduct[]>> {
     let params = new HttpParams();
     if(this.shopParams.brandId>0) params = params.append("brandId",this.shopParams.brandId);
-
     if(this.shopParams.categoryId>0) params =  params.append("categoryId",this.shopParams.categoryId);
+    params = params.append('sort',this.shopParams.sort);
+    
+    params = params.append('pageIndex',this.shopParams.pageIndex.toString());
+    params = params.append('pageSize',this.shopParams.pageSize.toString());
+
 
     return this.http.get<Pagination<Iproduct[]>>(environment.apiUrl + 'shop/products',{params}).pipe(
+      
       map(response => {
         this.pagination = response;
         console.log(response)
