@@ -11,15 +11,21 @@
 
             <h5 class="text-warning ms-3">Brands</h5>
             <ul class="list-group my-3">
-                <li class="list-group-item">
-				    #brand1
-                </li>
+                <li class="list-group-item"
+                *ngFor="let brand of brands"
+                [class.active]="brand.brandId === shopParams.brandId"
+                (click)="onBrandSelected(brand.brandId)">
+              {{ brand.brandName }}
+            </li>
             </ul>
             <h5 class="text-warning ms-3">Categories</h5>
             <ul class="list-group my-3">
-                <li class="list-group-item">
-				  category1
-                </li>
+                <li class="list-group-item"
+                *ngFor="let category of categories"
+                [class.active]="category.categoryId === shopParams.categoryId"
+                (click)="onCategorySelected(category.categoryId)">
+              {{ category.categoryName }}
+            </li>
             </ul>
 
         </section>

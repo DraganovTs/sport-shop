@@ -15,10 +15,11 @@ export interface Iproduct {
 
 export interface iBrand {
     brandId: number;
-    name: string;
+    brandName: string;
 }
 
 export interface iCategory {
    categoryId: number;
-    name: string;
+   categoryName: string;
+    
 }
