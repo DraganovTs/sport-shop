@@ -97,6 +97,7 @@ onCategorySelected(categoryId: number){
   this.getProducts();
 }
 
+
 onSortSelected(event: any){
   const params = this.shopService.getShopParams();
   params.sort = event.target.value;
