@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Iproduct, iCategory , iBrand } from '../shared/model/products';
 import { ShopService } from './shop.service';
@@ -27,6 +27,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
+  @ViewChild('search') searchTerm?: ElementRef;
   products: Iproduct[] = [];
   categories: iCategory[] = [];
   brands: iBrand[] = [];
@@ -112,5 +113,23 @@ onPageChanged(event: any){
     this.shopParams = params;
     this.getProducts();
   }
+}
+
+onSearch(){
+  const params = this.shopService.getShopParams();
+
+  params.search = this.searchTerm?.nativeElement.value;
+  params.pageIndex = 1;
+  this.shopService.setShopParams(params);
+  this.shopParams = params;
+  this.getProducts();
+  
+}
+
+onReset(){
+  if(this.searchTerm) this.searchTerm.nativeElement.value='';
+  this.shopParams = new ShopParams();
+  this.shopService.setShopParams(this.shopParams);
+  this.getProducts();
 }
 }

@@ -25,7 +25,7 @@ export class ShopService {
     
     params = params.append('pageIndex',this.shopParams.pageIndex.toString());
     params = params.append('pageSize',this.shopParams.pageSize.toString());
-
+    if(this.shopParams.search) params = params.append("serch",this.shopParams.search)
 
     return this.http.get<Pagination<Iproduct[]>>(environment.apiUrl + 'shop/products',{params}).pipe(
       
