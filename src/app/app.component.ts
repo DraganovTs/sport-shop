@@ -5,7 +5,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ShopComponent } from './shop/shop.component';
 import { CartService } from './shop/cart/cart.service '
 import { BehaviorSubject, Subject } from 'rxjs';
-import { ICart } from './shared/model/cart';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,7 @@ import { ICart } from './shared/model/cart';
 })
 export class AppComponent implements OnInit {
   pageTitle: string = 'Welcome to my new online sport shop';
-  // private bs = new BehaviorSubject<ICart | null>(null); 
-  // bs$ = this.bsSource.asObservable();
+
 
   constructor(private cartService: CartService) {}
 
