@@ -39,7 +39,7 @@ export class CartService {
   }
 
   getCart(id: string): Observable<Cart> {
-    return this.http.get<ICart>(`${this.shoppingCartUrl}/${id}`).pipe(
+    return this.http.get<ICart>("http://localhost:8080/v1/sport/cart/"+`${id}`).pipe(
       map((cart: ICart) => {
         this.cartSource.next(cart);
         this.calculateTotals();
