@@ -5,19 +5,18 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ShopComponent } from './shop/shop.component';
 import { CartService } from './shop/cart/cart.service '
 import { BehaviorSubject, Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavBarComponent, ShopComponent],
+  imports: [CommonModule, RouterOutlet, NavBarComponent, ShopComponent, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   pageTitle: string = 'Welcome to my new online sport shop';
-
 
   constructor(private cartService: CartService) {}
 
@@ -44,22 +43,8 @@ export class AppComponent implements OnInit {
   }
 
   private demoSubject(): void {
-    // const subject = new Subject<number>();
-    // subject.subscribe({
-    //   next: data => console.log(`Observer A receives: ${data}`)
-    // });
-    // subject.subscribe({
-    //   next: data => console.log(`Observer B receives: ${data}`)
-    // });
-
-    // subject.next(10);
-    // subject.next(20);
-    // subject.subscribe({
-    //   next: data => console.log(`Observer C receives: ${data}`)
-    // });
-
     const bs = new BehaviorSubject(50);
-  bs.subscribe({
+    bs.subscribe({
       next: data => console.log(`Observer A receives: ${data}`)
     });
     bs.subscribe({
@@ -72,6 +57,6 @@ export class AppComponent implements OnInit {
       next: data => console.log(`Observer C receives: ${data}`)
     });
     bs.next(30);
-    console.log(bs.value)
+    console.log(bs.value);
   }
 }
