@@ -1,24 +1,28 @@
-import { Component , Input } from '@angular/core';
+import { Component , Input, Output ,EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IcartItem } from '../../shared/model/cart';
+
 
 @Component({
   selector: 'app-cart-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule , CartDetailsComponent],
   templateUrl: './cart-details.component.html',
   styleUrls: ['./cart-details.component.scss']
 })
 export class CartDetailsComponent {
   @Input() items: IcartItem[] = [];
+  @Output() increment: EventEmitter<IcartItem> = new EventEmitter<IcartItem>();
+  @Output() decrement: EventEmitter<IcartItem> = new EventEmitter<IcartItem>();
+  @Output() remove: EventEmitter<IcartItem> = new EventEmitter<IcartItem>();
 
   incrementItemQuantity(item: IcartItem){
-
+      this.increment.emit(item);
   }
   decrementItemQuantity(item: IcartItem){
-
+    this.decrement.emit(item);
   }
-  removeItemFromCart(item: IcartItem){
-    
+  removeCartItem(item: IcartItem){
+    this.remove.emit(item);
   }
 }
