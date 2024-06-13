@@ -10,7 +10,7 @@ import { ICart } from '../../shared/model/cart';
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, RouterLink,RouterLinkActive,NgIf, AsyncPipe],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss'
 })
