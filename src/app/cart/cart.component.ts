@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ICart, IcartItem, IcartTotals } from '../../shared/model/cart';
-import { CartService } from '../cart/cart.service ';
-import { CartDetailsComponent } from '../../core/cart-details/cart-details.component';
+import { ICart, IcartItem, IcartTotals } from '../shared/model/cart';
+import { CartService } from './cart.service ';
+import { CartDetailsComponent } from '../core/cart-details/cart-details.component';
 import { RouterModule } from '@angular/router';  // Import RouterModule for routing
 
 @Component({

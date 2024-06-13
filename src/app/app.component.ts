@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 import { ShopComponent } from './shop/shop.component';
-import { CartService } from './shop/cart/cart.service '
+import { CartService } from './cart/cart.service '
 import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 

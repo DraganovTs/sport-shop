@@ -15,6 +15,17 @@
             </app-cart-details>
           </div>
         </div>
+        <div class="row">
+            <div class="col-6 offset-lg-7">
+                SubTotal w/o shipping: <span><strong>{{(cartTotals$ | async )!.subtotal | currency}}</strong></span>            </div>
+            <br/>
+            <div class="col-6 offset-lg-9">
+                <a routerLink="/checkout" class="btn btn-outline-primary py-2 btn-dark">
+                    Proceed to Checkout
+                </a>
+            </div>
+        </div>
+       
       </div>
     </div>
   </div>
