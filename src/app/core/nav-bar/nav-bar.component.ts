@@ -4,8 +4,8 @@ import { ActivatedRoute, ActivatedRouteSnapshot, RouterLink, RouterLinkActive, R
 import { CartService } from '../../cart/cart.service ';
 import { Observable } from 'rxjs';
 import { ICart } from '../../shared/model/cart';
-// import { KeycloakService } from 'keycloak-angular';
-// import { KeycloakProfile } from 'keycloak-js';
+import { KeycloakService } from 'keycloak-angular';
+ import { KeycloakProfile } from 'keycloak-js';
 
 @Component({
   selector: 'app-nav-bar',
