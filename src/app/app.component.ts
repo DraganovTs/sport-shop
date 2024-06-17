@@ -6,12 +6,13 @@ import { ShopComponent } from './shop/shop.component';
 import { CartService } from './cart/cart.service '
 import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavBarComponent, ShopComponent, HttpClientModule],
+  imports: [CommonModule, RouterOutlet, NavBarComponent, ShopComponent, HttpClientModule,KeycloakAngularModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

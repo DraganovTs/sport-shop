@@ -7,12 +7,12 @@ import { ICart } from '../../shared/model/cart';
 import { KeycloakService } from 'keycloak-angular';
  import { KeycloakProfile } from 'keycloak-js';
 
-@Component({
+ @Component({
   selector: 'app-nav-bar',
   standalone: true,
   imports: [CommonModule, RouterModule, RouterLink,RouterLinkActive,NgIf, AsyncPipe],
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.scss'
+  styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
   cart$  : Observable<ICart|null>;
@@ -52,4 +52,5 @@ export class NavBarComponent implements OnInit {
     get email() {
       return this.userProfile?.email;
     }
-}
+  }
+    
